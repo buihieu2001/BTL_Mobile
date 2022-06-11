@@ -164,7 +164,7 @@ public class FragmentSceneChat extends Fragment {
     public User setDataSender(){
         Layout_Home layout_home = (Layout_Home) getActivity();
         User user = layout_home.SetDataUser();
-        Log.e("TAG", "setDataSender: "+ user.getName() );
+        //Log.e("TAG", "setDataSender: "+ user.getName() );
         return user;
     }
 

@@ -34,10 +34,12 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
     public final List<ChatMessage> data;
     public ConversionsFragment conversionsFragment ;
     FirebaseFirestore firebaseFirestore;
+    private final String senderID;
 
     public RecentConversationsAdapter(List<ChatMessage> data , ConversionsFragment conversionsFragment) {
         this.data = data;
         this.conversionsFragment = conversionsFragment;
+        this.senderID = conversionsFragment.setDataSender().getId();
         Log.e("TAG", "UserAdapter: " + data.size());
     }
 
@@ -102,8 +104,17 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
             binding.ctFriendUserContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.e("TAG", "onClick: " + chatMessage.getIdReceiver());
-                    conversionsFragment.loadingFriend(chatMessage.getIdReceiver());
+                    Log.e("TAG", "onClick: R  " + chatMessage.getIdReceiver());
+                    Log.e("TAG", "onClick: S  " + senderID);
+                    if(chatMessage.getIdReceiver().equals(senderID) == false) {
+                        conversionsFragment.loadingFriend(chatMessage.getIdReceiver());
+                    }
+                    else{
+                         conversionsFragment.loadingFriend(chatMessage.getIdSend());
+                         Log.e("TAG", "onClick: S  " + senderID);
+
+                }
+
                 }
             });
         }

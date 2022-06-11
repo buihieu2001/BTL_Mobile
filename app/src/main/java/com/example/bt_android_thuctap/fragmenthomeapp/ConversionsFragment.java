@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.bt_android_thuctap.Layout_Home;
 import com.example.bt_android_thuctap.R;
 import com.example.bt_android_thuctap.adpter.RecentConversationsAdapter;
 import com.example.bt_android_thuctap.adpter.UserAdapter;
@@ -165,6 +166,13 @@ public class ConversionsFragment extends Fragment {
             }
 
         });
+
+    }
+    public User setDataSender(){
+        Layout_Home layout_home = (Layout_Home) getActivity();
+        User user = layout_home.SetDataUser();
+        //Log.e("TAG", "setDataSender: "+ user.getName() );
+        return user;
     }
 
 
